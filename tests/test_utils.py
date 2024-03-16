@@ -1,17 +1,8 @@
-import pytest
-import os
-from config import ROOT_DIR
 from src.utils import load_json, unpacker
 
 
-@pytest.fixture
-def coll():
-    PATH_TO_PRODUCTS = os.path.join(ROOT_DIR, 'src', 'products.json')
-    return load_json(PATH_TO_PRODUCTS)
-
-
-def test_load_json(coll):
-    assert coll[1:] == [{
+def test_load_json(for_test_load_json):
+    assert load_json(for_test_load_json)[1:] == [{
         "name": "Телевизоры",
         "description": "Современный телевизор, который позволяет наслаждаться "
                        "просмотром, станет вашим другом и помощником",
@@ -26,5 +17,5 @@ def test_load_json(coll):
     }]
 
 
-def test_unpacker(coll):
-    assert unpacker(coll)[0][0].name == "Смартфоны"
+def test_unpacker(for_test_load_json):
+    assert unpacker(load_json(for_test_load_json))[0][0].name == "Смартфоны"
