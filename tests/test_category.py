@@ -1,7 +1,7 @@
 from src.category import Category
 
 
-def test_init(for_category):
+def test_init(null, for_category):
     assert for_category.name == "Смартфоны"
     assert for_category.description == ("Смартфоны, как средство не только "
                                         "коммуникации, но и "
@@ -12,9 +12,9 @@ def test_init(for_category):
     assert Category.products_count == 2
 
 
-def test_add_product(for_category, for_product):
+def test_add_product(null, for_category, for_product):
     for_category.add_product(for_product)
-    assert Category.products_count == 5
+    assert Category.products_count == 3
     assert for_category.products[2].startswith("Xiaomi Redmi Note 11") is True
 
 
