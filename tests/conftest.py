@@ -35,3 +35,10 @@ def dict_with_product():
             'description': "1024GB, Синий",
             'price': 31000.0,
             'quantity': 14}
+
+
+@pytest.fixture
+def null():
+    Category.category_count = 0
+    Category.products_count = 0
+    Product.products_list = []
