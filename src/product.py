@@ -17,15 +17,13 @@ class Product:
         Product.products_list.append(self)
 
     @classmethod
-    def init_new_product(cls, dict_with_prod, category):
+    def init_new_product(cls, dict_with_prod):
         """
         Класс метод для распаковки одного товара из словаря с данными о товаре.
         Если товар ранее с таким названием ранее находился в системе,
         то увеличивает его количество,
         иначе отправляет на добавление в указанную категорию
         :param dict_with_prod: словарь с данными о товаре
-        :param category: предполагаемая категория
-                         для добавления товара из словаря
         :return: None
         """
         name = dict_with_prod['name']
@@ -37,8 +35,8 @@ class Product:
                 product.quantity += quantity
                 if product.price < price:
                     product.price = price
-                return None
-        category.add_product(cls(name, description, price, quantity))
+                return product
+        return cls(name, description, price, quantity)
 
     @property
     def price(self):

@@ -38,7 +38,7 @@ class Category:
         :return: None
         """
         self.__products.append(new_product)
-        Category.products_count += 1
+        Category.products_count = len(self.__products)
 
     @property
     def products(self):

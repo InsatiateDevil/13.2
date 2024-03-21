@@ -10,15 +10,12 @@ def test_init(for_product):
     assert for_product.quantity == 14
 
 
-def test_init_new_product(null, dict_with_product, for_category):
-    assert len(for_category.products) == 2
-    assert len(Product.products_list) == 2
-    Product.init_new_product(dict_with_product, for_category)
-    assert Product.products_list[2].quantity == 14
-    assert len(for_category.products) == 3
-    Product.init_new_product(dict_with_product, for_category)
-    assert len(for_category.products) == 3
-    assert Product.products_list[2].quantity == 28
+def test_init_new_product(null, dict_with_product):
+    assert len(Product.products_list) == 0
+    Product.init_new_product(dict_with_product)
+    assert Product.products_list[0].quantity == 14
+    Product.init_new_product(dict_with_product)
+    assert Product.products_list[0].quantity == 28
 
 
 def test_price_getter(for_product):
