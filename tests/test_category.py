@@ -7,7 +7,8 @@ def test_init(null, for_category):
                                         "коммуникации, но и "
                                         "получение дополнительных функций для "
                                         "удобства жизни")
-    assert for_category.products[0].startswith("Samsung Galaxy C23 Ultra") is True
+    assert for_category.products[0].startswith(
+        "Samsung Galaxy C23 Ultra") is True
     assert Category.category_count == 1
     assert Category.products_count == 2
 
@@ -25,13 +26,15 @@ def test_product_getter(for_category):
 
 
 def test_repr(for_category):
-    print_repr = ("Категория - Смартфоны, описание - Смартфоны, как средство "
-                  "не только коммуникации, "
-                  "но и получение дополнительных функций для удобства жизни, "
-                  "продукты - "
-                  "[Продукт - Samsung Galaxy C23 Ultra, описание - 256GB, "
-                  "Серый цвет, 200MP камера, "
-                  "цена - 180000.0, количество в наличие - 5|, "
-                  "Продукт - Iphone 15, описание - 512GB, Gray space, "
-                  "цена - 210000.0, количество в наличие - 8|]|")
-    assert for_category.__repr__() == print_repr
+    print_repr = (
+        'Category(Смартфоны, Смартфоны, как средство не только коммуникации, '
+        'но и получение дополнительных функций для удобства жизни, '
+        '[Product(Samsung Galaxy C23 Ultra, '
+        '256GB, Серый цвет, 200MP камера, 5), '
+        'Product(Iphone 15, 512GB, Gray space, 8)])')
+    assert repr(for_category) == print_repr
+
+
+def test_str(for_category):
+    print_str = "Название категории, количество продуктов: 13 шт."
+    assert str(for_category) == print_str
