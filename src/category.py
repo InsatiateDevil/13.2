@@ -30,7 +30,7 @@ class Category:
         Category.category_count += 1
         Category.products_count += len(products)
 
-    def add_product(self, new_product: Product):
+    def add_product(self, new_product: Product) -> None:
         """
         метод отвечающий за добавление нового продукта в текущую категорию
         и увеличивающий счетчик видов товара
@@ -41,17 +41,30 @@ class Category:
         Category.products_count = len(self.__products)
 
     @property
-    def products(self):
+    def products(self) -> list:
         """
         геттер для возврата списка описаний продуктов текущей категории
         :return: список с описанием продуктов
         """
         list_of_products = []
         for product in self.__products:
-            list_of_products.append(f"{product.name}, {product.price} руб. "
-                                    f"Остаток: {product.quantity} шт.")
+            list_of_products.append(str(product))
         return list_of_products
 
-    def __repr__(self):
-        return (f"Категория - {self.name}, описание - {self.description},"
-                f" продукты - {self.__products}|")
+    def __str__(self) -> str:
+        """
+        Возвращает строковое отображение информации о категории, содержащее
+        информации о сумме единиц товара в ней
+        :return: ф-строка
+        """
+        list_of_quantity = []
+        for product in self.__products:
+            list_of_quantity.append(len(product))
+        return f"Название категории, количество продуктов: {sum(list_of_quantity)} шт."
+
+    def __repr__(self) -> str:
+        """
+        Возвращает отладочную информацию об экземпляре класса "категория"
+        :return: ф - строку
+        """
+        return f"{self.__class__.__name__}({self.name}, {self.description}, {self.__products})"

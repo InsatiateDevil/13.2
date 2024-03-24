@@ -8,7 +8,7 @@ class Product:
     products_list: list
     products_list = []
 
-    def __init__(self, name: str, description: str, price: float, quantity: int):
+    def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
         self.name = name
         self.description = description
         self.__price = price
@@ -17,7 +17,7 @@ class Product:
         Product.products_list.append(self)
 
     @classmethod
-    def init_new_product(cls, dict_with_prod):
+    def init_new_product(cls, dict_with_prod) -> object:
         """
         Класс метод для распаковки одного товара из словаря с данными о товаре.
         Если товар ранее с таким названием ранее находился в системе,
@@ -66,6 +66,35 @@ class Product:
         else:
             self.__price = new_price
 
-    def __repr__(self):
-        return (f"Продукт - {self.name}, описание - {self.description}, "
-                f"цена - {self.price}, количество в наличие - {self.quantity}|")
+    def __add__(self, other) -> int:
+        """
+        вызывается при попытке сложить два экземпляра класса
+        "продукт" и складывает стоимость
+        :param other: другой экземпляр класса продукт
+        :return: целочисленное значение
+        """
+        self.summary = self.quantity * self.price
+        other.summary = other.quantity * other.price
+        return self.summary + other.summary
+
+    def __len__(self) -> int:
+        """
+        вызывается при обращении к классу в функции len()
+        :return: целочисленное значение - количество товаров
+        """
+        return self.quantity
+
+    def __str__(self) -> str:
+        """
+        Возвращает строковое представление
+        информации о продукте(имя, цена, количество)
+        :return: ф-строку
+        """
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __repr__(self) -> str:
+        """
+        Возвращает отладочную информацию о экземпляре класса "продукт"
+        :return: ф-строку
+        """
+        return f"{self.__class__.__name__}({self.name}, {self.description}, {self.quantity})"
