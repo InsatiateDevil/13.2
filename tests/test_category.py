@@ -13,8 +13,8 @@ def test_init(null, for_category):
     assert Category.products_count == 2
 
 
-def test_add_product(null, for_category, for_product):
-    for_category.add_product(for_product)
+def test_add_product(null, for_category, for_product_1):
+    for_category.add_product(for_product_1)
     assert Category.products_count == 3
     assert for_category.products[2].startswith("Xiaomi Redmi Note 11") is True
 
