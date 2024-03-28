@@ -23,6 +23,11 @@ class Category:
         :param products: содержит список
         экземпляров класса продукт(иначе говоря продукты)
         """
+        for product in products:
+            if not isinstance(product, Product):
+                raise TypeError("элементы списка продуктов, должны является"
+                                "экземпляры класса 'продукт' или экземплярами"
+                                "классов наследуемых от 'продукта'")
         self.name = name
         self.description = description
         self.__products = products
@@ -37,6 +42,10 @@ class Category:
         :param new_product: экземпляр класса продукты
         :return: None
         """
+        if not isinstance(new_product, Product):
+            raise TypeError("элементы списка продуктов, должны является"
+                            "экземпляры класса 'продукт' или экземплярами"
+                            "классов наследуемых от 'продукта'")
         self.__products.append(new_product)
         Category.products_count = len(self.__products)
 
@@ -69,7 +78,7 @@ class Category:
         list_of_quantity = []
         for product in self.__products:
             list_of_quantity.append(len(product))
-        return f"Название категории, количество продуктов: {sum(list_of_quantity)} шт."
+        return f"{self.name}, количество продуктов: {sum(list_of_quantity)} шт."
 
     def __repr__(self) -> str:
         """

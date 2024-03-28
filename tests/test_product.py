@@ -1,3 +1,4 @@
+import pytest
 from src.product import Product
 
 
@@ -34,8 +35,10 @@ def test_price_setter(for_product_1):
     assert for_product_1.price == 32000.0
 
 
-def test_add(null, for_category):
-    assert Product.products_list[0] + Product.products_list[1] == 2580000.0
+def test_add(null, for_product_2, for_product_3, for_lawn_grass):
+    assert for_product_2 + for_product_3 == 2580000.0
+    with pytest.raises(TypeError):
+        for_lawn_grass + for_product_2
 
 
 def test_len(for_product_1):
