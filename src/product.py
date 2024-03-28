@@ -1,4 +1,7 @@
-class Product:
+from src.pattern_product import PatternProduct
+
+
+class Product(PatternProduct):
     """
     Класс продуктов
     внутри непосредственно класса только список продуктов - общий,
