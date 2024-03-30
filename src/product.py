@@ -8,7 +8,8 @@ class Product:
     products_list: list
     products_list = []
 
-    def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
+    def __init__(self, name: str, description: str, price: float,
+                 quantity: int) -> None:
         self.name = name
         self.description = description
         self.__price = price
@@ -66,16 +67,21 @@ class Product:
         else:
             self.__price = new_price
 
+    def sum_price_prod(self):
+        return self.quantity * self.price
+
     def __add__(self, other) -> int:
         """
         вызывается при попытке сложить два экземпляра класса
-        "продукт" и складывает стоимость
+        "продукт" и складывает стоимость, также проверяет, что сложение ведется
+        с объектом допустимого типа
         :param other: другой экземпляр класса продукт
         :return: целочисленное значение
         """
-        self.summary = self.quantity * self.price
-        other.summary = other.quantity * other.price
-        return self.summary + other.summary
+        if not isinstance(other, self.__class__):
+            raise TypeError("сложение допустимо только между экземплярами "
+                            "одного и того же класса")
+        return self.sum_price_prod() + other.sum_price_prod()
 
     def __len__(self) -> int:
         """

@@ -1,7 +1,10 @@
+import pytest
 from src.category import Category
 
 
 def test_init(null, for_category):
+    with pytest.raises(TypeError):
+        Category('лол', 'дважды лол', ['какой-то', 'список'])
     assert for_category.name == "Смартфоны"
     assert for_category.description == ("Смартфоны, как средство не только "
                                         "коммуникации, но и "
@@ -17,6 +20,8 @@ def test_add_product(null, for_category, for_product_1):
     for_category.add_product(for_product_1)
     assert Category.products_count == 3
     assert for_category.products[2].startswith("Xiaomi Redmi Note 11") is True
+    with pytest.raises(TypeError):
+        for_category.add_product('лол')
 
 
 def test_product_getter(for_category):
@@ -36,5 +41,5 @@ def test_repr(for_category):
 
 
 def test_str(for_category):
-    print_str = "Название категории, количество продуктов: 13 шт."
+    print_str = "Смартфоны, количество продуктов: 13 шт."
     assert str(for_category) == print_str

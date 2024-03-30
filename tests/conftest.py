@@ -4,6 +4,8 @@ from config import ROOT_DIR
 from src.product import Product
 from src.category import Category
 from src.product_iterator import ProductIterator
+from src.smartphone import Smartphone
+from src.lawn_grass import LawnGrass
 
 
 @pytest.fixture
@@ -37,6 +39,20 @@ def for_product_2():
 def for_product_3():
     return Product("Iphone 15", "512GB, Gray space",
                    210000.0, 8)
+
+
+@pytest.fixture
+def for_smartphone():
+    return Smartphone('Redmi Note 9 Pro', '256GB, Breeze',
+                      20_000, 23, 'Мощный', 'Note 9 Pro',
+                      '256GB', 'Breeze')
+
+
+@pytest.fixture
+def for_lawn_grass():
+    return LawnGrass('Трава газонная', 'Свежая газонная трава',
+                     1_500, 235, 'Бразилия',
+                     '3-4 недели', 'Салатовый')
 
 
 @pytest.fixture()
