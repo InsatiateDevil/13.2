@@ -1,7 +1,8 @@
+from src.mixinlog import MixinLog
 from src.pattern_product import PatternProduct
 
 
-class Product(PatternProduct):
+class Product(PatternProduct, MixinLog):
     """
     Класс продуктов
     внутри непосредственно класса только список продуктов - общий,
@@ -19,6 +20,8 @@ class Product(PatternProduct):
         self.quantity = quantity
 
         Product.products_list.append(self)
+        if type(self) is Product:
+            self.print_ec()
 
     @classmethod
     def init_new_product(cls, dict_with_prod) -> object:
@@ -28,7 +31,8 @@ class Product(PatternProduct):
         то увеличивает его количество,
         иначе отправляет на добавление в указанную категорию
         :param dict_with_prod: словарь с данными о товаре
-        :return: None
+        :return: или продукт, который был модифицирован из-за совпадения,
+        или новый экземпляр класса "продукт"
         """
         name = dict_with_prod['name']
         description = dict_with_prod['description']
@@ -37,8 +41,7 @@ class Product(PatternProduct):
         for product in Product.products_list:
             if product.name == name:
                 product.quantity += quantity
-                if product.price < price:
-                    product.price = price
+                product.price = price
                 return product
         return cls(name, description, price, quantity)
 
@@ -73,7 +76,7 @@ class Product(PatternProduct):
     def sum_price_prod(self):
         return self.quantity * self.price
 
-    def __add__(self, other) -> int:
+    def __add__(self, other) -> int or float:
         """
         вызывается при попытке сложить два экземпляра класса
         "продукт" и складывает стоимость, также проверяет, что сложение ведется

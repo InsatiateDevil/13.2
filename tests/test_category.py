@@ -19,7 +19,7 @@ def test_init(null, for_category):
 def test_add_product(null, for_category, for_product_1):
     for_category.add_product(for_product_1)
     assert Category.products_count == 3
-    assert for_category.products[2].startswith("Xiaomi Redmi Note 11") is True
+    assert for_category.products[-1].startswith("Xiaomi Redmi Note 11") is True
     with pytest.raises(TypeError):
         for_category.add_product('лол')
 
