@@ -84,7 +84,7 @@ class Product(PatternProduct, MixinLog):
         :param other: другой экземпляр класса продукт
         :return: целочисленное значение
         """
-        if not isinstance(other, self.__class__):
+        if type(self) is not type(other):
             raise TypeError("сложение допустимо только между экземплярами "
                             "одного и того же класса")
         return self.sum_price_prod() + other.sum_price_prod()

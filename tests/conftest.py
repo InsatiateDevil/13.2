@@ -6,6 +6,7 @@ from src.category import Category
 from src.product_iterator import ProductIterator
 from src.smartphone import Smartphone
 from src.lawn_grass import LawnGrass
+from io import StringIO, BytesIO
 
 
 @pytest.fixture
@@ -73,3 +74,9 @@ def null():
     Category.category_count = 0
     Category.products_count = 0
     Product.products_list = []
+
+
+@pytest.fixture
+def input_user(monkeypatch):
+    user_input = StringIO("n\ny")
+    monkeypatch.setattr('sys.stdin', user_input)
