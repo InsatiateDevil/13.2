@@ -1,6 +1,6 @@
 import json
-from src.product import Product
-from src.category import Category
+from src.classes_package.product import Product
+from src.classes_package.category import Category
 
 
 def load_json(path):

@@ -1,12 +1,12 @@
 import pytest
 import os
 from config import ROOT_DIR
-from src.product import Product
-from src.category import Category
-from src.product_iterator import ProductIterator
-from src.smartphone import Smartphone
-from src.lawn_grass import LawnGrass
-from io import StringIO, BytesIO
+from src.classes_package.product import Product
+from src.classes_package.category import Category
+from src.classes_package.product_iterator import ProductIterator
+from src.classes_package.smartphone import Smartphone
+from src.classes_package.lawn_grass import LawnGrass
+from io import StringIO
 
 
 @pytest.fixture

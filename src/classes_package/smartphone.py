@@ -1,15 +1,15 @@
-from src.mixinlog import MixinLog
-from src.product import Product
+from src.classes_package.product import Product
 
 
-class LawnGrass(Product):
+class Smartphone(Product):
     def __init__(self, name: str, description: str, price: float, quantity: int,
-                 country_prod: str, germin_period, color: str):
+                 performance, model: str, memory, color: str):
         super().__init__(name, description, price, quantity)
-        self.country_prod = country_prod
-        self.germin_period = germin_period
+        self.performance = performance
+        self.model = model
+        self.memory = memory
         self.color = color
-        if type(self) is LawnGrass:
+        if type(self) is Smartphone:
             self.print_ec()
 
     def __repr__(self) -> str:
@@ -18,5 +18,5 @@ class LawnGrass(Product):
         :return: ф-строку
         """
         return (f"{self.__class__.__name__}({self.name}, {self.description},"
-                f" {self.quantity}, {self.country_prod}, {self.germin_period},"
-                f" {self.color})")
+                f" {self.quantity}, {self.performance}, {self.model},"
+                f" {self.memory}, {self.color})")

@@ -1,5 +1,5 @@
 import pytest
-from src.category import Category
+from src.classes_package.category import Category
 
 
 def test_init(null, for_category):

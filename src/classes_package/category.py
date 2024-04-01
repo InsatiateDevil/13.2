@@ -1,5 +1,5 @@
-from src.mixinlog import MixinLog
-from src.product import Product
+from src.classes_package.mixinlog import MixinLog
+from src.classes_package.product import Product
 
 
 class Category(MixinLog):

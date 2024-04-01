@@ -1,5 +1,5 @@
-from src.mixinlog import MixinLog
-from src.pattern_product import PatternProduct
+from src.classes_package.mixinlog import MixinLog
+from src.classes_package.pattern_product import PatternProduct
 
 
 class Product(PatternProduct, MixinLog):
