@@ -15,6 +15,14 @@ def for_load_json():
 
 
 @pytest.fixture
+def empty_category():
+    return Category("Телевизоры",
+                    "Современный телевизор, который позволяет "
+                    "наслаждаться просмотром, станет вашим другом и помощником",
+                    [])
+
+
+@pytest.fixture
 def for_category(for_product_2, for_product_3):
     return Category("Смартфоны",
                     "Смартфоны, как средство не только коммуникации, но и "
@@ -40,6 +48,12 @@ def for_product_2():
 def for_product_3():
     return Product("Iphone 15", "512GB, Gray space",
                    210000.0, 8)
+
+
+@pytest.fixture
+def product_0_quant():
+    return Product("Iphone 24", "1024GB, Blue space",
+                   500000.0, 0)
 
 
 @pytest.fixture

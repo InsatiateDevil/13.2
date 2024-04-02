@@ -25,6 +25,9 @@ class Category(MixinLog):
         экземпляров класса продукт(иначе говоря продукты)
         """
         for product in products:
+            if len(product) <= 0:
+                raise ValueError("Товар с нулевым/отрицательным количеством"
+                                 "не может быть добавлен")
             if not isinstance(product, Product):
                 raise TypeError("элементы списка продуктов, должны является"
                                 "экземпляры класса 'продукт' или экземплярами"
@@ -45,12 +48,26 @@ class Category(MixinLog):
         :param new_product: экземпляр класса продукты
         :return: None
         """
+        if len(new_product) <= 0:
+            raise ValueError("Товар с нулевым/отрицательным количеством"
+                             "не может быть добавлен")
         if not isinstance(new_product, Product):
             raise TypeError("элементы списка продуктов, должны является"
                             "экземпляры класса 'продукт' или экземплярами"
                             "классов наследуемых от 'продукта'")
         self.__products.append(new_product)
         Category.products_count += 1
+
+    def avg_price(self):
+        try:
+            sum_price = 0
+            sum_prod_quant = 0
+            for product in self.__products:
+                sum_price += product.price
+            avg_price = sum_price/len(self)
+            return avg_price
+        except ZeroDivisionError:
+            return 0
 
     @property
     def products(self) -> list:
