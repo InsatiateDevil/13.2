@@ -1,7 +1,8 @@
+from src.mixinlog import MixinLog
 from src.product import Product
 
 
-class Category:
+class Category(MixinLog):
     """
     Класс категорий
     Непосредственно в классе находятся два счетчика - один считает количество
@@ -34,6 +35,8 @@ class Category:
 
         Category.category_count += 1
         Category.products_count += len(products)
+        if type(self) is Category:
+            self.print_ec()
 
     def add_product(self, new_product: Product) -> None:
         """
@@ -47,7 +50,7 @@ class Category:
                             "экземпляры класса 'продукт' или экземплярами"
                             "классов наследуемых от 'продукта'")
         self.__products.append(new_product)
-        Category.products_count = len(self.__products)
+        Category.products_count += 1
 
     @property
     def products(self) -> list:

@@ -1,3 +1,4 @@
+from src.mixinlog import MixinLog
 from src.product import Product
 
 
@@ -9,3 +10,14 @@ class Smartphone(Product):
         self.model = model
         self.memory = memory
         self.color = color
+        if type(self) is Smartphone:
+            self.print_ec()
+
+    def __repr__(self) -> str:
+        """
+        Возвращает отладочную информацию о экземпляре класса "продукт"
+        :return: ф-строку
+        """
+        return (f"{self.__class__.__name__}({self.name}, {self.description},"
+                f" {self.quantity}, {self.performance}, {self.model},"
+                f" {self.memory}, {self.color})")

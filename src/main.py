@@ -1,6 +1,8 @@
 from src.category import Category
 from src.product import Product
 from src.product_iterator import ProductIterator
+from src.smartphone import Smartphone
+from src.lawn_grass import LawnGrass
 from src.utils import load_json, unpacker
 import os
 from config import ROOT_DIR
@@ -12,8 +14,10 @@ def main():
     response = load_json(PATH_TO_PRODUCTS)
     category_list, product_list = unpacker(response)
     # print(Product.products_list[0] + Product.products_list[1])
-    for product in ProductIterator(category_list[0]):
-        print(product)
+    redmi = Smartphone('Redmi Note 9 Pro', '256GB, Breeze',
+                      20_000, 23, 'Мощный', 'Note 9 Pro',
+                      '256GB', 'Breeze')
+    print(redmi)
 
 
 if __name__ == '__main__':

@@ -24,7 +24,7 @@ def test_price_getter(for_product_1):
     assert for_product_1.price == 31000.0
 
 
-def test_price_setter(for_product_1):
+def test_price_setter(for_product_1, input_user):
     for_product_1.price = 30000.0  # При вводе 'n'
     assert for_product_1.price == 31000.0
     for_product_1.price = 30000.0  # При вводе 'y'
