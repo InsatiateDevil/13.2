@@ -1,17 +1,25 @@
 import pytest
 import os
 from config import ROOT_DIR
-from src.product import Product
-from src.category import Category
-from src.product_iterator import ProductIterator
-from src.smartphone import Smartphone
-from src.lawn_grass import LawnGrass
-from io import StringIO, BytesIO
+from src.classes_package.product import Product
+from src.classes_package.category import Category
+from src.classes_package.product_iterator import ProductIterator
+from src.classes_package.smartphone import Smartphone
+from src.classes_package.lawn_grass import LawnGrass
+from io import StringIO
 
 
 @pytest.fixture
 def for_load_json():
     return os.path.join(ROOT_DIR, 'src', 'products.json')
+
+
+@pytest.fixture
+def empty_category():
+    return Category("Телевизоры",
+                    "Современный телевизор, который позволяет "
+                    "наслаждаться просмотром, станет вашим другом и помощником",
+                    [])
 
 
 @pytest.fixture
@@ -40,6 +48,12 @@ def for_product_2():
 def for_product_3():
     return Product("Iphone 15", "512GB, Gray space",
                    210000.0, 8)
+
+
+@pytest.fixture
+def product_0_quant():
+    return Product("Iphone 24", "1024GB, Blue space",
+                   500000.0, 0)
 
 
 @pytest.fixture

@@ -1,6 +1,3 @@
-from src.product_iterator import ProductIterator
-
-
 def test_init(for_iterator):
     assert str(for_iterator.category) == ("Смартфоны,"
                                           " количество продуктов: 13 шт.")

@@ -1,8 +1,4 @@
-from src.category import Category
-from src.product import Product
-from src.product_iterator import ProductIterator
-from src.smartphone import Smartphone
-from src.lawn_grass import LawnGrass
+from src.classes_package.smartphone import Smartphone
 from src.utils import load_json, unpacker
 import os
 from config import ROOT_DIR
